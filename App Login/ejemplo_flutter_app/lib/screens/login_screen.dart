@@ -40,7 +40,10 @@ class LoginScreen extends StatelessWidget
             (
               onPressed: ()
               {
-                if(userController.text == user && passController.text == pass)
+                String inputUser = userController.text;
+                String inputPass = passController.text;
+
+                if(inputUser == user && inputPass == pass)
                 {
                   appRouter.push('/home');
                 }
