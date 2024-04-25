@@ -1,19 +1,19 @@
-import 'package:ejemplo_flutter_app/core/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatelessWidget 
 {
-  
-  HomeScreen({super.key});
+  static const name = 'HomeScreen';
+  String userName;
+  HomeScreen({super.key, required this.userName});
 
   @override
   Widget build(BuildContext context) 
   {
-    return const Scaffold
+    return Scaffold
     (
-
+      appBar: AppBar(title: const Text('Home Screen', style: TextStyle(fontWeight: FontWeight.bold),),),
+      body: Center(child: Text('¡Welcome $userName!', style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),),
     );
-
   }
 }
