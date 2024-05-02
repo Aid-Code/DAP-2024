@@ -5,16 +5,14 @@ void main() {
   runApp(MainApp());
 }
 
-class MainApp extends StatelessWidget 
-{
+class MainApp extends StatelessWidget {
   MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) 
-  {
-    return MaterialApp.router
-    (
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
       routerConfig: appRouter,
+      theme: ThemeData.dark(),
     );
   }
 }
