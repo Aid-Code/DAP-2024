@@ -63,8 +63,14 @@ class LoginScreen extends StatelessWidget {
 
                 if (users.contains(inputUser) &&
                     passwords.contains(inputPass)) {
-                  context.pushNamed(HomeScreen.name,
-                      extra: userController.text);
+                  if (users.indexOf(inputUser) ==
+                      passwords.indexOf(inputPass)) {
+                    context.pushNamed(HomeScreen.name,
+                        extra: userController.text);
+                  } else if (users.indexOf(inputUser) !=
+                      passwords.indexOf(inputPass)) {
+                    ScaffoldMessenger.of(context).showSnackBar(errorMessage);
+                  }
                 } else if (inputUser.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(errorMessage);
                 } else if (inputPass.isEmpty) {
