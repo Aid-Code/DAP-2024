@@ -1,6 +1,5 @@
 import 'package:ejemplo_flutter_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 // ignore: must_be_immutable
