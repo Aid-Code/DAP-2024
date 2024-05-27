@@ -1,4 +1,4 @@
-import 'package:app_idx/screens/arduinoUno_screen.dart';
+import 'package:app_idx/screens/arduinouno_screen.dart';
 import 'package:app_idx/screens/home_screen.dart';
 import 'package:app_idx/screens/login_screen.dart';
 import 'package:go_router/go_router.dart';

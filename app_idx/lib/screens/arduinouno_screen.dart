@@ -1,5 +1,3 @@
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2666024223.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:2871923425.
 import 'package:flutter/material.dart';
 
 class ArduinoUno extends StatelessWidget {

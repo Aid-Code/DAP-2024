@@ -9,8 +9,24 @@ class LoginScreen extends StatelessWidget {
 
   TextEditingController userController = TextEditingController();
   TextEditingController passController = TextEditingController();
-  List<String> users = ['Aiden', 'Ale', 'Marcos'];
-  List<String> passwords = ['123', 'soyAle', 'miContraseña123'];
+
+  List<Map<String, String>> usersAndPasswords = 
+  [
+    {
+      'username': 'Aid', 
+      'password': '123'
+    },
+
+    {
+      'username': 'Ale', 
+      'password': 'soyAle'
+    },
+
+    {
+      'username': 'Marcos', 
+      'password': 'miContraseña123'
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                 hintText: 'Username',
                 prefixIcon: Icon(Icons.person),
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(30)))),
+                borderRadius: BorderRadius.all(Radius.circular(30)))),
           ),
           const SizedBox(
             height: 20,
@@ -54,36 +70,48 @@ class LoginScreen extends StatelessWidget {
                   fixedSize: const Size(300, 50),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30))),
-              onPressed: () {
+              onPressed: () 
+              {
                 SnackBar errorMessage = const SnackBar(
                     content: Text('Usuario o contraseña incorrectos'));
                 String inputUser = userController.text;
                 String inputPass = passController.text;
 
-                if (users.contains(inputUser) &&
-                    passwords.contains(inputPass)) {
-                  if (users.indexOf(inputUser) ==
-                      passwords.indexOf(inputPass)) {
-                    context.pushNamed(HomeScreen.name,
-                        extra: userController.text);
-                  } else if (users.indexOf(inputUser) !=
-                      passwords.indexOf(inputPass)) {
+                if (inputPass.isNotEmpty && inputUser.isNotEmpty) 
+                {
+                  bool userFound = false;
+                  for (var user in usersAndPasswords) 
+                  {
+                    if (user['username'] == inputUser && user['password'] == inputPass) 
+                    {
+                      userFound = true;
+                      context.pushNamed(HomeScreen.name, extra: userController.text);
+                      break;
+                    }
+                  }
+                  if (!userFound) 
+                  {
                     ScaffoldMessenger.of(context).showSnackBar(errorMessage);
                   }
-                } else if (inputUser.isEmpty) {
+                } 
+                else if (inputUser.isEmpty) 
+                {
                   ScaffoldMessenger.of(context).showSnackBar(errorMessage);
-                } else if (inputPass.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(errorMessage);
-                } else if (users.contains(inputUser) == false ||
-                    passwords.contains(inputPass) == false) {
+                } 
+                else if (inputPass.isEmpty) 
+                {
                   ScaffoldMessenger.of(context).showSnackBar(errorMessage);
                 }
+
               },
-              child: const Text(
+              child: const Text
+              (
                 'Login',
-              ))
-        ],
-      ),
-    ));
+              )
+            )
+          ],
+        ),
+      )
+    );
   }
 }

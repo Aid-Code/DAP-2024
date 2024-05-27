@@ -1,4 +1,4 @@
-import 'package:app_idx/screens/arduinoUno_screen.dart';
+import 'package:app_idx/screens/arduinouno_screen.dart';
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:4018608794.
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +7,27 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   static const name = 'HomeScreen';
   String userName;
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1050022159.
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1213486258.
-  List<String> items = ['Arduino Uno', 'Arduino Mega', 'Arduino Nano'];
-  List<String> itemsSubtitles = ['\$19.999', '\$46.080', '\$9.500'];
+
+  final List<Map<String, String>> placas =[
+    {
+      'Nombre': 'Arduino Uno',
+      'Precio': '\$19.999',
+      'Imagen': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Arduino-uno-perspective-transparent.png/1164px-Arduino-uno-perspective-transparent.png'
+    },
+
+    {
+      'Nombre': 'Arduino Mega',
+      'Precio': '\$46.080',
+      'Imagen': 'https://static.wixstatic.com/media/c2df3c_aae97bb9244f409d9c32f7735151e28c~mv2.png/v1/fill/w_480,h_480,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/c2df3c_aae97bb9244f409d9c32f7735151e28c~mv2.png'
+    },
+
+    {
+      'Nombre': 'Arduino Nano',
+      'Precio': '\$9.500',
+      'Imagen': 'https://hackmakemod.com/cdn/shop/products/image_e177589f-a348-4526-ad23-f047f63bc7b4.png?v=1637727454'
+    }
+    ];
+ 
   HomeScreen({super.key, required this.userName});
 
   @override
@@ -23,15 +40,15 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: ListView.builder(
-            itemCount: items.length,
+            itemCount: placas.length,
             itemBuilder: (context, index) {
               return Card(
                   child: ListTile(
-                title: Text(items[index]),
-                subtitle: Text(itemsSubtitles[index]),
-                leading: const Image(image: AssetImage('app_idx/assets/arduino.png')),
+                    title: Text(placas[index]['Nombre']!),
+                subtitle: Text(placas[index]['Precio']!),
+                leading: Image.network(placas[index]['Imagen']!),
                 onTap:() {
-                  if(items[index] == 'Arduino Uno')
+                  if(placas[index]['Nombre'] == 'Arduino Uno')
                   {
                     context.pushNamed(ArduinoUno.name);
                   }
